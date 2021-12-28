@@ -159,6 +159,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "::::: CALCULO DEL DETERMINATE Y MATRIZ INVERSA ::::: DE UNA MATRIZ DE N X N :::::" +
     "";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grid_Matriz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridinversa)).EndInit();
             this.ResumeLayout(false);
