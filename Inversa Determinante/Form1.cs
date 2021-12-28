@@ -90,5 +90,74 @@ namespace Inversa_Determinante
             }
             return num;
         }
+
+        private double[,] ConseguirMatrizAlterna(double[,] inMatriz2, int posicioni, int posicionj)
+        {
+            int num = Convert.ToInt32(Math.Pow(double.Parse(inMatriz2.Length.ToString()), 0.5)) - 1;
+            double[,] array = new double[num, num];
+            int num2 = 0;
+            for (int i = 0; i < num; i++)
+            {
+                if (i == posicionj)
+                {
+                    num2 = 1;
+                }
+                if (num2 == 0)
+                {
+                    int num3 = 0;
+                    for (int j = 0; j < num; j++)
+                    {
+                        if (j == posicioni)
+                        {
+                            num3 = 1;
+                        }
+                        if (num3 == 0)
+                        {
+                            double[,] array2 = array;
+                            int num4 = j;
+                            int num5 = i;
+                            double num6 = inMatriz2[j, i];
+                            array2[num4, num5] = num6;
+                        }
+                        else
+                        {
+                            double[,] array3 = array;
+                            int num7 = j;
+                            int num8 = i;
+                            double num9 = inMatriz2[j + 1, i];
+                            array3[num7, num8] = num9;
+                        }
+                    }
+                }
+                else
+                {
+                    int num3 = 0;
+                    for (int j = 0; j < num; j++)
+                    {
+                        if (j == posicioni)
+                        {
+                            num3 = 1;
+                        }
+                        if (num3 == 0)
+                        {
+                            double[,] array4 = array;
+                            int num10 = j;
+                            int num11 = i;
+                            double num12 = inMatriz2[j, i + 1];
+                            array4[num10, num11] = num12;
+                        }
+                        else
+                        {
+                            double[,] array5 = array;
+                            int num13 = j;
+                            int num14 = i;
+                            double num15 = inMatriz2[j + 1, i + 1];
+                            array5[num13, num14] = num15;
+                        }
+                    }
+                }
+            }
+            return array;
+        }
     }
 }
