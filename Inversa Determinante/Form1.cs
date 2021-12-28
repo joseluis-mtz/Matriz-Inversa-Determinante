@@ -69,5 +69,26 @@ namespace Inversa_Determinante
                 }
             }
         }
+
+        private double Determinante(double[,] inMatriz)
+        {
+            double num = 0.0;
+            double num2 = Math.Pow(double.Parse(inMatriz.Length.ToString()), 0.5);
+            if (num2 == 2.0)
+            {
+                num = inMatriz[0, 0] * inMatriz[1, 1] - inMatriz[0, 1] * inMatriz[1, 0];
+            }
+            else
+            {
+                int num3 = Convert.ToInt32(num2 - 1.0);
+                double[,] array = new double[num3, num3];
+                for (int i = 0; (double)i < num2; i++)
+                {
+                    array = this.ConseguirMatrizAlterna(inMatriz, 0, i);
+                    num += Math.Pow(-1.0, (double)i) * inMatriz[0, i] * this.Determinante(array);
+                }
+            }
+            return num;
+        }
     }
 }
