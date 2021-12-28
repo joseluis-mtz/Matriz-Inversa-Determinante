@@ -21,11 +21,7 @@ namespace Inversa_Determinante
 
         private double[,] MatrizInvertida;
 
-        private double[,] MatrizIdentidad;
-
         private int mcg;
-
-        private Random r = new Random();
 
         private double determinantedeMatriz;
 
