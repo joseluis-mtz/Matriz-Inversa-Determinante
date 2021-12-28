@@ -40,7 +40,34 @@ namespace Inversa_Determinante
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            txt_x.Focus();
+        }
 
+        private void CrearMatriz(int mc)
+        {
+            this.grid_Matriz.Rows.Clear();
+            this.grid_Matriz.Columns.Clear();
+            this.gridinversa.Rows.Clear();
+            this.gridinversa.Columns.Clear();
+            this.Matriz = new double[mc, mc];
+            int i;
+            for (i = 0; i < mc; i++)
+            {
+                this.grid_Matriz.Columns.Add("Columna" + i.ToString(), i.ToString());
+                this.grid_Matriz.Columns[i].Width = 60;
+                this.gridinversa.Columns.Add("Columna" + i.ToString(), i.ToString());
+                this.gridinversa.Columns[i].Width = 60;
+            }
+            this.grid_Matriz.Rows.Add(mc);
+            this.gridinversa.Rows.Add(mc);
+            for (i = 0; i < mc; i++)
+            {
+                for (int j = 0; j < mc; j++)
+                {
+                    int num = 0;
+                    this.grid_Matriz.Rows[i].Cells[j].Value = num;
+                }
+            }
         }
     }
 }
