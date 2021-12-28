@@ -102,6 +102,7 @@
             this.btn_datos.TabIndex = 16;
             this.btn_datos.Text = "Establecer Tamaño";
             this.btn_datos.UseVisualStyleBackColor = true;
+            this.btn_datos.Click += new System.EventHandler(this.btn_datos_Click);
             // 
             // txt_x
             // 

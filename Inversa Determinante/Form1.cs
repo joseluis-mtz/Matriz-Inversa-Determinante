@@ -159,5 +159,28 @@ namespace Inversa_Determinante
             }
             return array;
         }
+
+        private void btn_datos_Click(object sender, EventArgs e)
+        {
+            if (txt_x.Text.Length > 0)
+            {
+                int tamano = int.Parse(txt_x.Text);
+                if (tamano >= 3)
+                {
+                    this.mcg = int.Parse(this.txt_x.Text);
+                    this.CrearMatriz(this.mcg);
+                }
+                else
+                {
+                    MessageBox.Show("El tamaño de la matriz debe ser por lo menos de 3x3.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txt_x.Text = "3";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debes definir el tamaño de la matriz.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txt_x.Text = "3";
+            }
+        }
     }
 }
