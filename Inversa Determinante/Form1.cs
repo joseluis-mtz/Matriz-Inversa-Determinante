@@ -160,6 +160,24 @@ namespace Inversa_Determinante
             return array;
         }
 
+        private double[,] Adjunta(double[,] inMatriz3)
+        {
+            int num = Convert.ToInt32(Math.Pow(double.Parse(inMatriz3.Length.ToString()), 0.5));
+            double[,] array = new double[num, num];
+            for (int i = 0; i < num; i++)
+            {
+                for (int j = 0; j < num; j++)
+                {
+                    double[,] array2 = array;
+                    int num2 = i;
+                    int num3 = j;
+                    double num4 = Math.Pow(-1.0, (double)(i + j)) * this.Determinante(this.ConseguirMatrizAlterna(inMatriz3, i, j));
+                    array2[num2, num3] = num4;
+                }
+            }
+            return array;
+        }
+
         private void btn_datos_Click(object sender, EventArgs e)
         {
             if (txt_x.Text.Length > 0)
@@ -180,6 +198,35 @@ namespace Inversa_Determinante
             {
                 MessageBox.Show("Debes definir el tamaño de la matriz.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txt_x.Text = "3";
+            }
+        }
+
+        private void btn_ok_Click(object sender, EventArgs e)
+        {
+            this.determinantedeMatriz = 0.0;
+            for (int i = 0; i < this.mcg; i++)
+            {
+                for (int j = 0; j < this.mcg; j++)
+                {
+                    double[,] matriz = this.Matriz;
+                    int num = i;
+                    int num2 = j;
+                    double num3 = double.Parse(this.grid_Matriz.Rows[i].Cells[j].Value.ToString());
+                    matriz[num, num2] = num3;
+                }
+            }
+            this.determinantedeMatriz = this.Determinante(this.Matriz);
+            this.txt_respuesta.Text = this.determinantedeMatriz.ToString();
+            this.MatrizAdjunta = this.Adjunta(this.Matriz);
+            this.MatrizTranspuestaAdjunta = this.TransponerMatriz(this.MatrizAdjunta);
+
+            this.MatrizInvertida = this.matrizmenosuno(this.MatrizTranspuestaAdjunta, this.determinantedeMatriz);
+            for (int i = 0; i < this.mcg; i++)
+            {
+                for (int j = 0; j < this.mcg; j++)
+                {
+                    this.gridinversa.Rows[i].Cells[j].Value = this.MatrizInvertida[i, j];
+                }
             }
         }
     }

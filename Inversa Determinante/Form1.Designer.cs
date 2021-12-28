@@ -92,6 +92,7 @@
             this.btn_ok.TabIndex = 17;
             this.btn_ok.Text = "Calcular Inversa";
             this.btn_ok.UseVisualStyleBackColor = true;
+            this.btn_ok.Click += new System.EventHandler(this.btn_ok_Click);
             // 
             // btn_datos
             // 
