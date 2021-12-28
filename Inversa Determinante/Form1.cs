@@ -178,6 +178,24 @@ namespace Inversa_Determinante
             return array;
         }
 
+        private double[,] TransponerMatriz(double[,] inmattrans)
+        {
+            int num = Convert.ToInt32(Math.Pow(double.Parse(inmattrans.Length.ToString()), 0.5));
+            double[,] array = new double[num, num];
+            for (int i = 0; i < num; i++)
+            {
+                for (int j = 0; j < num; j++)
+                {
+                    double[,] array2 = array;
+                    int num2 = i;
+                    int num3 = j;
+                    double num4 = inmattrans[j, i];
+                    array2[num2, num3] = num4;
+                }
+            }
+            return array;
+        }
+
         private void btn_datos_Click(object sender, EventArgs e)
         {
             if (txt_x.Text.Length > 0)
